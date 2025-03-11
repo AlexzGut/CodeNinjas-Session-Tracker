@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta charset="UTF-8">
+        <title>Ninjas</title>
+    </head>
+    <body>
+        <header>
+            <nav>
+
+            </nav>
+        </header>
+        <main>
+            <table>
+                <thead>
+                    <tr>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Belt</th>
+                        <th>Level</th>
+                        <th>Working On</th>
+                        <th>Last Update</th>
+                        <th>Last Handled by</th>
+                    </tr>
+                </thead>
+                <tbody>
+                <tr th:each="ninja : ${ninjas}">
+                    <form method="post">
+                        <td th:text="${ninja.firstName}"></td>
+                        <td th:text="${ninja.lastName}"></td>
+                        <td>
+                            <select>
+                                <option th:each="belt : ${belts}"
+                                        th:value="${belt.id}"
+                                        th:text="${belt.beltColor}"
+                                        selected="(${belt.id} == ${ninja.beltColor})">
+                                </option>
+                            </select>
+                        </td>
+                        <td th:text="${ninja.levelNumber}"></td>
+                        <td th:text="${ninja.taskName}"></td>
+                        <td th:text="${ninja.sensei}"></td>
+                    </form>
+                </tr>
+                </tbody>
+            </table>
+        </main>
+    </body>
+</html>
