@@ -26,20 +26,53 @@
                 <tbody>
                 <tr th:each="ninja : ${ninjas}">
                     <form method="post">
-                        <td th:text="${ninja.firstName}"></td>
-                        <td th:text="${ninja.lastName}"></td>
                         <td>
-                            <select>
+                            <input type="text" id="firstName" name="firstName" th:value="${ninja.firstName}">
+                        </td>
+                        <td>
+                            <input type="text" id="lastName" name="lastName" th:value="${ninja.lastName}">
+                        </td>
+                        <td>
+                            <select id="beltColor" name="beltColor">
                                 <option th:each="belt : ${belts}"
                                         th:value="${belt.id}"
                                         th:text="${belt.beltColor}"
-                                        selected="(${belt.id} == ${ninja.beltColor})">
+                                        th:selected="(${belt.id} == ${ninja.beltColor.id})">
                                 </option>
                             </select>
                         </td>
-                        <td th:text="${ninja.levelNumber}"></td>
-                        <td th:text="${ninja.taskName}"></td>
-                        <td th:text="${ninja.sensei}"></td>
+                        <td>
+                            <select id="levelNumber" name="levelNumber">
+                                <option th:each="level : ${levels}"
+                                        th:value="${level.id}"
+                                        th:text="${level.levelNumber}"
+                                        th:selected="(${level.id} == ${ninja.levelNumber.id})">
+                                </option>
+                            </select>
+                        </td>
+                        <td>
+                            <select id="taskName" name="taskName">
+                                <option th:each="task : ${tasks}"
+                                        th:value="${task.id}"
+                                        th:text="${task.taskName}"
+                                        th:selected="(${task.id} == ${ninja.taskName.id})">
+                                </option>
+                            </select>
+                        </td>
+                        <td th:text="${ninja.updatedOn}"></td>
+                        <td>
+                            <select id="sensei" name="sensei">
+                                <option th:each="sensei : ${senseis}"
+                                        th:value="${sensei.id}"
+                                        th:text="${sensei.firstName + ' ' + sensei.lastName}"
+                                        th:selected="(${sensei.id} == ${ninja.sensei.id})">
+                                </option>
+                            </select>
+                        </td>
+                        <td>
+                            <input type="submit" value="Submit">
+                        </td>
+
                     </form>
                 </tr>
                 </tbody>
