@@ -6,9 +6,13 @@ import com.codeninjas.session_tracker.sensei.Sensei;
 import com.codeninjas.session_tracker.task.Task;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
+
+import java.sql.Date;
 
 @Data
 @AllArgsConstructor
+@NoArgsConstructor
 public class Ninja {
 
     private String firstName;
@@ -16,6 +20,7 @@ public class Ninja {
     private Belt beltColor;
     private Level levelNumber;
     private Task taskName;
+    private Date updatedOn;
     private Sensei sensei;
 
 }
