@@ -23,17 +23,25 @@ public class NinjaController {
 
     @ModelAttribute(name = "ninjas")
     public List<Ninja> ninjas(Model model) {
-        model.addAttribute("ninja", new Ninja());
+
         long currentTime = System.currentTimeMillis();
         log.info("current time {}", currentTime);
         return Arrays.asList(
-                new Ninja("Alexander",
-                        "Gutierrez",
+                new Ninja("Bailey",
+                        "Smith",
                         new Belt(3, "Orange"),
                         new Level(2, 2),
                         new Task(2, "Build 2"),
                         new Date(currentTime),
-                        new Sensei(1, "John", "Gaviria")
+                        new Sensei(2, "John", "Gaviria")
+                ),
+                new Ninja("Tatiana",
+                        "Marquez",
+                        new Belt(1, "White"),
+                        new Level(1, 1),
+                        new Task(1, "Build 1"),
+                        new Date(currentTime),
+                        new Sensei(1, "Alexander", "Gutierrez")
                 )
         );
     }
@@ -85,6 +93,6 @@ public class NinjaController {
     @PostMapping("/list")
     public String saveNinja(Ninja ninja) {
         log.info("Ninja {}", ninja);
-        return "redirect: /list";
+        return "redirect:/ninja/list";
     }
 }
